@@ -17,17 +17,30 @@ var guessesSoFar = [];
 var userinput = null;
 //computer randomly generates a word from list of cities in aboe array
 var wordInPlay = citiesList[Math.floor(Math.random() * citiesList.length)];
-console.log(randomCityWord);
+console.log(wordInPlay);
+
+//getting an array of the word in play
 var arrayOfWordInPlay = [];
+    arrayOfWordInPlay = wordInPlay.split();
+console.log(arrayOfWordInPlay);
 
 
 // some things we have to do during the game //
 //////////////////////////////////////////////
 
+//update the written score in the DOM
 var updateScore = function(){
   document.querySelector("#score").innerHTML = "Wins: " + wins;
 };
+console.log(wins);
+// update the written guesses remaining in the DOM
+var updateGuessesRemaining = function(){
+  doccument.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + guessesRemaining;
+};
+console.log(guessesRemaining);
+console.log(guessesSoFar);
 
+// will refrest the guesses remaing, letters guessed so far array and the word in play but not the score
 var reset = function(){
 
 }
