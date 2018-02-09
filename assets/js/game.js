@@ -16,22 +16,22 @@ var guessesSoFar = [];
 //will be determined later when the document.onkeyup function is called
 var userInput = null;
 //computer randomly generates a word from list of cities in aboe array
-var wordInPlay = citiesList[Math.floor(Math.random() * citiesList.length)];
-console.log(wordInPlay);
+var wordToPlay = citiesList[Math.floor(Math.random() * citiesList.length)];
+console.log(wordToPlay);
 
 //getting an array of the word in play
-var arrayOfWordInPlay = [];
-    arrayOfWordInPlay = wordInPlay.split();
-console.log(arrayOfWordInPlay);
+var arrayOfWordToPlay = [];
+    arrayOfWordToPlay = wordToPlay.split('');
+console.log(arrayOfWordToPlay);
 
 //turning the word in play into underlined letters with spaces between them.
 var underscoreArray = [];
-for (var i = 0; i < wordInPlay.length; i++) {
+for (var i = 0; i < wordToPlay.length; i++) {
   underscoreArray[i] = "_ ";
 }
 //getting rid of the comma that seperates the array of underscores
 var underscoreWord = underscoreArray.join("");
-console.log(underscoreArray);
+// console.log(underscoreArray);
 console.log(underscoreWord);
 
 //sending the underscored word to play to the document
@@ -49,35 +49,51 @@ var updateScore = function(){
 };
 // update the written guesses remaining in the DOM
 var updateGuessesRemaining = function(){
-  doccument.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + guessesRemaining;
+  document.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + guessesRemaining;
 };
-console.log(guessesRemaining);
-console.log(guessesSoFar);
+
 
 // will refrest the guesses remaing, letters guessed so far array and the word in play but not the score
 var reset = function(){
-  arrayOfWordInPlay = [];
+  arrayOfWordTnPlay = [];
   guessesRemaining = 10;
   guessesSoFar = [];
 }
-
 
 
 /////////////////////////
 /// playing the game ///
 ///////////////////////
 
-document.onkeyup = (function(event){
+document.onkeyup = (function(wordToPlay, arrayOfWordToPlay, underscoreArray, undercoreword){
   //calls funtion that prints the word to guess in DOM
   refreshWord();
 
   //get the letter that the user presses
   var userInput = String.fromCharCode(event.keyCode).toLowerCase();
   console.log(userInput);
+  //push the key pressed letter into the guessesSoFar array
   guessesSoFar.push(userInput);
   console.log(guessesSoFar);
-  document.querySelector("#lettersAlreadyUsed").innerHTML = "Letters you've chosen so far: " + guessesSoFar + ".";
-  //for loop that allows for entry of 26 letters
-
+  //sends the letter pressed to the DOM as they are pressed
+  document.querySelector("#lettersAlreadyUsed").innerHTML = "Letters you've chosen so far: " + guessesSoFar;
+  ////compare user input to the answer while the number of guesses remaining is > 0 or until all the letters are guessed///
+console.log(wordToPlay);
+  for (var i = 0; i < wordToPlay.length ; i++){
+    console.log(userInput);
+    console.log(arrayOfWordToPlay[i]);
+    if (userInput == arrayOfWordToPlay[i]) {
+      // console.log("guessed correctly" + arrayOfWordToPlay[i]);
+    underscoreArray[i] = arrayOfWordToPlay[i];
+    // console.log("updated"+underscoreArray);
+    console.log(underscoreArray);
+      // userInput[i].push(underscoreArray[i]);
+    }
+    console.log(arrayOfWordToPlay);
+    // console.log(underscoreArray);
+  }
+  // console.log(arraytwo);
+  // console.log(arrayOfWordToPlay);
+  // console.log(underscoreArray);
 
 });
