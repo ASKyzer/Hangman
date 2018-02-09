@@ -77,6 +77,7 @@ document.onkeyup = (function(wordToPlay, arrayOfWordToPlay, underscoreArray, und
   console.log(guessesSoFar);
   //sends the letter pressed to the DOM as they are pressed
   document.querySelector("#lettersAlreadyUsed").innerHTML = "Letters you've chosen so far: " + guessesSoFar;
+
   ////compare user input to the answer while the number of guesses remaining is > 0 or until all the letters are guessed///
 console.log(wordToPlay);
   for (var i = 0; i < wordToPlay.length ; i++){
@@ -85,15 +86,33 @@ console.log(wordToPlay);
     if (userInput == arrayOfWordToPlay[i]) {
       // console.log("guessed correctly" + arrayOfWordToPlay[i]);
     underscoreArray[i] = arrayOfWordToPlay[i];
-    // console.log("updated"+underscoreArray);
+    // // console.log("updated"+underscoreArray);
+
+// go through loop of length of word and if the user input matches the index of the word, then print that letter to the DOM.
+
+//if the user input does not match, then geuessesRemaining-- (the number of guesses left goes down)
+
+//another key is pressed by the user and the above cycles again.
+
+//when all the letters in the word is guessed, alert you win and the reset(); updateScore(); and win++ would go here.
+
+
+
+
+
+
+
+
+
+
     console.log(underscoreArray);
       // userInput[i].push(underscoreArray[i]);
     }
     console.log(arrayOfWordToPlay);
-    // console.log(underscoreArray);
+    console.log(underscoreArray);
   }
   // console.log(arraytwo);
   // console.log(arrayOfWordToPlay);
   // console.log(underscoreArray);
-
+  /////////////////////////////////
 });
