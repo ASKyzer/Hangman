@@ -24,7 +24,13 @@ var arrayOfWordInPlay = [];
     arrayOfWordInPlay = wordInPlay.split();
 console.log(arrayOfWordInPlay);
 
+//turning the word in play into underlined letters with spaces between them.
+var underscoreArray = [];
+for (var i = 0; i < wordInPlay.length; i++) {
+  underscoreArray[i] = "_ ";
 
+}
+console.log(underscoreArray);
 // some things we have to do during the game //
 //////////////////////////////////////////////
 
@@ -32,7 +38,6 @@ console.log(arrayOfWordInPlay);
 var updateScore = function(){
   document.querySelector("#score").innerHTML = "Wins: " + wins;
 };
-console.log(wins);
 // update the written guesses remaining in the DOM
 var updateGuessesRemaining = function(){
   doccument.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + guessesRemaining;
