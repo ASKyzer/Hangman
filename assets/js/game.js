@@ -28,11 +28,15 @@ console.log(arrayOfWordInPlay);
 var underscoreArray = [];
 for (var i = 0; i < wordInPlay.length; i++) {
   underscoreArray[i] = "_ ";
-
 }
+//getting rid of the comma that seperates the array of underscores
 var underscoreWord = underscoreArray.join("");
 console.log(underscoreArray);
 console.log(underscoreWord);
+
+//sending the underscored word to play to the document
+var wordToPlay = document.getElementById('wordToGuess');
+  wordToPlay.innerHTML = underscoreWord;
 // some things we have to do during the game //
 //////////////////////////////////////////////
 
