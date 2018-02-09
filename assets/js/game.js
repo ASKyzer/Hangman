@@ -14,7 +14,7 @@ var guessesRemaining = 10;
 // this will hold the letters the player guesses and display in DOM
 var guessesSoFar = [];
 //will be determined later when the document.onkeyup function is called
-var userinput = null;
+var userInput = null;
 //computer randomly generates a word from list of cities in aboe array
 var wordInPlay = citiesList[Math.floor(Math.random() * citiesList.length)];
 console.log(wordInPlay);
@@ -35,8 +35,11 @@ console.log(underscoreArray);
 console.log(underscoreWord);
 
 //sending the underscored word to play to the document
-var wordToPlay = document.getElementById('wordToGuess');
-  wordToPlay.innerHTML = underscoreWord;
+var refreshWord = function(){
+  var wordToPlay = document.getElementById('wordToGuess');
+    wordToPlay.innerHTML = underscoreWord;
+};
+////////////////////////////////////////////////
 // some things we have to do during the game //
 //////////////////////////////////////////////
 
@@ -53,5 +56,28 @@ console.log(guessesSoFar);
 
 // will refrest the guesses remaing, letters guessed so far array and the word in play but not the score
 var reset = function(){
-
+  arrayOfWordInPlay = [];
+  guessesRemaining = 10;
+  guessesSoFar = [];
 }
+
+
+
+/////////////////////////
+/// playing the game ///
+///////////////////////
+
+document.onkeyup = (function(event){
+  //calls funtion that prints the word to guess in DOM
+  refreshWord();
+
+  //get the letter that the user presses
+  var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+  console.log(userInput);
+  guessesSoFar.push(userInput);
+  console.log(guessesSoFar);
+  document.querySelector("#lettersAlreadyUsed").innerHTML = "Letters you've chosen so far: " + guessesSoFar + ".";
+  //for loop that allows for entry of 26 letters
+
+
+});
