@@ -30,7 +30,9 @@ for (var i = 0; i < wordInPlay.length; i++) {
   underscoreArray[i] = "_ ";
 
 }
+var underscoreWord = underscoreArray.join("");
 console.log(underscoreArray);
+console.log(underscoreWord);
 // some things we have to do during the game //
 //////////////////////////////////////////////
 
